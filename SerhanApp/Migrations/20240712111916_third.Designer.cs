@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SerhanApp.Data;
 
@@ -11,9 +12,11 @@ using SerhanApp.Data;
 namespace SerhanApp.Data.Migrations
 {
     [DbContext(typeof(SerhanContext))]
-    partial class SerhanContextModelSnapshot : ModelSnapshot
+    [Migration("20240712111916_third")]
+    partial class third
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

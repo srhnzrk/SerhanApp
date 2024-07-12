@@ -1,6 +1,7 @@
 ﻿using SerhanApp.Data;
 using SerhanApp.Data.Entities.ApplicationUsers;
 using SerhanApp.Data.Entities.Security;
+using System.Linq;
 using System.Security;
 
 namespace SerhanApp.Services.Security
@@ -12,6 +13,7 @@ namespace SerhanApp.Services.Security
 
         private readonly IGenericRepository<Permission> _permissionRepository;
         private readonly IGenericRepository<ApplicationUserRolePermissionMapping> _applicationUserRolePermissionMappingRepository;
+        private readonly IGenericRepository<ApplicationUserApplicationUserRoleMapping> _applicationUserApplicationUserRoleMappingRepository;
 
         #endregion
 
@@ -19,11 +21,13 @@ namespace SerhanApp.Services.Security
 
         public PermissionService(
             IGenericRepository<Permission> permissionRepository,
-            IGenericRepository<ApplicationUserRolePermissionMapping> applicationUserRolePermissionMappingRepository
+            IGenericRepository<ApplicationUserRolePermissionMapping> applicationUserRolePermissionMappingRepository,
+            IGenericRepository<ApplicationUserApplicationUserRoleMapping> applicationUserApplicationUserRoleMappingRepository
             )
         {
             _permissionRepository = permissionRepository;
             _applicationUserRolePermissionMappingRepository = applicationUserRolePermissionMappingRepository;
+            _applicationUserApplicationUserRoleMappingRepository = applicationUserApplicationUserRoleMappingRepository;
         }
 
         #endregion
@@ -35,12 +39,25 @@ namespace SerhanApp.Services.Security
             return _permissionRepository.Table.ToList();
         }
 
-        public List<Permission> GetPermissionsByApplicationUserRoleId(int roleId)
+        public List<Permission> GetPermissionsByApplicationUserRoleId(int applicationUserRoleId)
         {
             return _applicationUserRolePermissionMappingRepository.Table
-                .Where(x => x.ApplicationUserRoleId == roleId)
+                .Where(x => x.ApplicationUserRoleId == applicationUserRoleId)
                 .Select(x => x.Permission)
                 .ToList();
+        }
+
+        public List<Permission> GetPermissionsByApplicationUserId(int applicationUserId)
+        {
+            var query = from roleMapping in _applicationUserApplicationUserRoleMappingRepository.Table
+                        join rolePermissionMapping in _applicationUserRolePermissionMappingRepository.Table on roleMapping.ApplicationUserRoleId equals rolePermissionMapping.ApplicationUserRoleId
+                        join permission in _permissionRepository.Table on rolePermissionMapping.PermissionId equals permission.Id
+                        where roleMapping.ApplicationUserId == applicationUserId
+                        select permission;
+
+            var permissions = query.ToList();
+
+            return permissions;
         }
 
         public Permission GetPermissionBySystemName(string systemName)

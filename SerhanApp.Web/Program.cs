@@ -11,16 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<SerhanContext>();
-
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-
 builder.Services.AddScoped<IApplicationUserService, ApplicationUserService>();
-
 builder.Services.AddScoped<IApplicationUserRoleService, ApplicationUserRoleService>();
-
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
-
 builder.Services.AddScoped<IEncryptionService, EncryptionService>();
+builder.Services.AddScoped<IPermissionService, PermissionService>();
 
 
 

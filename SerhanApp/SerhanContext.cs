@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SerhanApp.Data.Entities.ApplicationUsers;
+using SerhanApp.Data.Entities.Security;
 
 namespace SerhanApp.Data
 {
@@ -14,6 +10,8 @@ namespace SerhanApp.Data
         public DbSet<ApplicationUserPassword> ApplicationUserPassword { get; set; }
         public DbSet<ApplicationUserRole> ApplicationUserRole { get; set; }
         public DbSet<ApplicationUserApplicationUserRoleMapping> ApplicationUserApplicationUserRoleMapping { get; set; }
+        public DbSet<Permission> Permission { get; set; }
+        public DbSet<ApplicationUserRolePermissionMapping> ApplicationUserRolePermissionMapping { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
