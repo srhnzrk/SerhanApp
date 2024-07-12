@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SerhanApp.Core\SerhanApp.Core.csproj" />
+    <ProjectReference Include="..\SerhanApp.Services\SerhanApp.Services.csproj" />
+    <ProjectReference Include="..\SerhanApp\SerhanApp.Data.csproj" />
+  </ItemGroup>
+
+</Project>
