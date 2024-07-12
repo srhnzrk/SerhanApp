@@ -35,12 +35,13 @@ namespace SerhanApp.Services.Security
             return _permissionRepository.Table.ToList();
         }
 
-        //public List<Permission> GetPermissionsByApplicationUserRoleId(int roleId)
-        //{
-        //    var query = _applicationUserRolePermissionMappingRepository
-        //        .Table.Where(x => x.ApplicationUserRoleId == roleId).Select(x => x.PermissionId).ToList();
-        //    return query;
-        //}
+        public List<Permission> GetPermissionsByApplicationUserRoleId(int roleId)
+        {
+            return _applicationUserRolePermissionMappingRepository.Table
+                .Where(x => x.ApplicationUserRoleId == roleId)
+                .Select(x => x.Permission)
+                .ToList();
+        }
 
         public Permission GetPermissionBySystemName(string systemName)
         {
