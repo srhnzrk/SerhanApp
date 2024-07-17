@@ -81,11 +81,5 @@ namespace SerhanApp.Services.Security
         }
 
         #endregion
-
-
-
-
     }
-
-
 }

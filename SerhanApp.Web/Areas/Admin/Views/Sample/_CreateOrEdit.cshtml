@@ -1,0 +1,153 @@
+﻿@model SampleModel
+
+<input asp-for="Id" type="hidden" />
+
+<div class="content-body">
+    <section id="horizontal-form-layouts">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title" id="horz-layout-basic">Project Info</h4>
+                        <a class="heading-elements-toggle">
+                            <i class="fa fa-ellipsis-v font-medium-3"></i>
+                        </a>
+                        <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li>
+                                    <a data-action="collapse"><i class="feather icon-minus"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-content collpase show">
+                        <div class="card-body">
+                            <div class="form-body">
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control">Full Name</label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Name" class="form-control" placeholder="Name & Surname" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control"> Select Country </label>
+
+                                    <div class="col-md-9">
+                                        <select class="select2 form-control" asp-for="SelectedCountryId" asp-items="Model.AvailableCountries"></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control"> Select Roles </label>
+
+                                    <div class="col-md-9">
+                                        <select class="select2 form-control" multiple="multiple" asp-for="SelectedRoleId" asp-items="Model.AvaliableRoles"></select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control">Quantity</label>
+                                    <div class="col-md-9">
+                                        <fieldset>
+                                            <div class="input-group bootstrap-touchspin">
+                                                <span class="input-group-btn input-group-prepend bootstrap-touchspin-injected"></span>
+                                                <input asp-for="Quantity" type="text" class="touchspin form-control" />
+                                                <span class="input-group-btn input-group-append bootstrap-touchspin-injected"></span>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control">Price</label>
+                                    <div class="col-md-9">
+                                        <fieldset>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                </div>
+                                                <input asp-for="Price" type="number" step="0.01" class="form-control" placeholder="Decimal Price" aria-label="Amount (to the nearest dollar)" />
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control">Gender</label>
+                                    <div class="col-md-9">
+                                        <fieldset>
+                                            <div class="custom-control custom-radio">
+                                                <input asp-for="Gender" type="radio" class="custom-control-input" value="Male" id="customRadio1" />
+                                                <label class="custom-control-label" for="customRadio1">Male</label>
+                                            </div>
+                                        </fieldset>
+
+                                        <fieldset>
+                                            <div class="custom-control custom-radio">
+                                                <input asp-for="Gender" type="radio" class="custom-control-input" value="Female" id="customRadio2" />
+                                                <label class="custom-control-label" for="customRadio2">Female</label>
+                                            </div>
+                                        </fieldset>
+
+                                        <fieldset>
+                                            <div class="custom-control custom-radio">
+                                                <input asp-for="Gender" type="radio" class="custom-control-input" value="Other" id="customRadio3" />
+                                                <label class="custom-control-label" for="customRadio3">Other</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control">Is User Account Active?</label>
+                                    <div class="col-md-9">
+                                        <fieldset>
+                                            <div class="custom-control custom-checkbox">
+                                                <input asp-for="Active" type="checkbox" class="custom-control-input" name="customCheck" id="customCheck1">
+                                                <label class="custom-control-label" for="customCheck1">Active</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" for="projectinput3">Date Selection</label>
+                                    <div class="col-md-9">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span class="fa fa-calendar-o"></span>
+                                                </span>
+                                            </div>
+                                            <input asp-for="Date" type="text" id="datepicker" class="form-control pickadate" placeholder="Pick a Date" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control">Receive Notification by E-Mail?</label>
+                                    <div class="col-md-9">
+                                        
+                                        <fieldset>
+                                            <div class="float-left">
+                                                <input asp-for="ReceiveEmailNotifications" type="checkbox" class="switch" id="receiveEmailSwitch" checked="checked" />
+                                            </div>
+                                        </fieldset>
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

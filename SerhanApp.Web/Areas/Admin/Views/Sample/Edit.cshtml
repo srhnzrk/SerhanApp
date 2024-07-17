@@ -1,0 +1,31 @@
+﻿@model SampleModel
+
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <form asp-action="Edit" method="post" class="form form-horizontal">
+            <div class="content-header row mb-2">
+                <div class="content-header-left col-md-6 col-12">
+                    <h1 class="content-header-title mb-0"> Sayfa Başlığı </h1>
+                    <div class="row breadcrumbs-top">
+                        <div class="breadcrumb-wrapper col-12">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/"><< Geri Dön</a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-header-right text-md-right col-md-6 col-12">
+                    <button type="button" class="btn btn-primary" id="type-success"><i class="fa fa-bell-o"></i> Kaydet</button>
+
+                    <button type="submit" class="btn btn-primary"> <i class="fa fa-bell-o"></i> Kaydet ve Devam Et</button>
+                    
+                    <button type="button" class="btn btn-danger" id="confirm-text"><i class="fa fa-bell-o"></i> Sil</button>
+                </div>
+            </div>
+            @await Html.PartialAsync("_CreateOrEdit", Model)
+        </form>
+    </div>
+</div>
