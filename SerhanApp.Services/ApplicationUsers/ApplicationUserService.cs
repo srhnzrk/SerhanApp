@@ -59,6 +59,11 @@ namespace SerhanApp.Services.ApplicationUsers
             return applicationUsers;
         }
 
+        public List<ApplicationUser> GetApplicationUsers()
+        {
+            return _applicationUserRepository.Table.ToList();
+        }
+
         public ApplicationUser GetApplicationUserById(int id)
         {
             return _applicationUserRepository.Table.FirstOrDefault(x => x.Id == id);

@@ -11,6 +11,7 @@ namespace SerhanApp.Services.ApplicationUsers
 
         List<ApplicationUser> SearchApplicationUsers(string name = "", string surname = "",
             int pageIndex = 0, int pageSize = int.MaxValue);
+        List<ApplicationUser> GetApplicationUsers();
         ApplicationUser GetApplicationUserById(int id);
         ApplicationUser GetApplicationUserByEmail(string email);
         ApplicationUser GetApplicationUserByUsername(string username);
