@@ -34,8 +34,6 @@ namespace SerhanApp.Web.Areas.Admin.Controllers
             return View(model);
         }
 
-
-
         public IActionResult Edit(int id)
         {
             var model = new SampleModel();
