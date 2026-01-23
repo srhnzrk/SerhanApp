@@ -13,7 +13,7 @@ namespace SerhanApp.Data
         {
             _context = context;
             _entities = _context.Set<TEntity>();
-        }
+        } 
 
         public List<TEntity> GetAllEntities()
         {
